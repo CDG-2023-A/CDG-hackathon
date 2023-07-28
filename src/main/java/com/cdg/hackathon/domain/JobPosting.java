@@ -1,6 +1,7 @@
 package com.cdg.hackathon.domain;
 
 import com.cdg.hackathon.dto.request.CreateJobPostingRequest;
+import com.cdg.hackathon.dto.request.UpdateJobPostingRequest;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,5 +45,12 @@ public class JobPosting extends BaseEntity{
                 .content(request.getContent())
                 .companyId(request.getCompanyId())
                 .build();
+    }
+
+    public void update(UpdateJobPostingRequest request) {
+        this.position = request.getPosition();
+        this.reward = request.getReward();
+        this.techStack = request.getTech_stack();
+        this.content = request.getContent();
     }
 }

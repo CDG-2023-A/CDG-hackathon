@@ -32,15 +32,18 @@ public class JobPostingService {
 //    }
 
     public void updateJobPosting(Long postId, UpdateJobPostingRequest request) {
-        Optional<JobPosting> byId = jobPostingRepository.findById(postId);
-        JobPosting jobPosting = byId.get();
 
-        if(!jobPosting.getPosition().equals(request.getPosition()));
+        JobPosting jobPosting = jobPostingRepository.findById(postId).orElseThrow(RuntimeException::new);
 
-
+        jobPosting.update(request);
     }
 
     public void deleteJobPosting(Long postId) {
+
+        JobPosting jobPosting = jobPostingRepository.findById(postId).orElseThrow(RuntimeException::new);
+
+        jobPostingRepository.delete(jobPosting);
+
     }
 
 //    public GetJobPostingResponse getJobPosting(Long postId) {
