@@ -1,17 +1,20 @@
-package com.cdg.hackathon.controller;
+package com.cdg.hackathon.jobposting.controller;
 
-import com.cdg.hackathon.dto.request.CreateJobPostingRequest;
-import com.cdg.hackathon.dto.request.DoApplyRequest;
-import com.cdg.hackathon.dto.request.UpdateJobPostingRequest;
-import com.cdg.hackathon.dto.response.GetJobPostingResponse;
-import com.cdg.hackathon.service.JobPostingService;
+import com.cdg.hackathon.jobposting.dto.request.CreateJobPostingRequest;
+import com.cdg.hackathon.jobposting.dto.request.DoApplyRequest;
+import com.cdg.hackathon.jobposting.dto.request.UpdateJobPostingRequest;
+import com.cdg.hackathon.jobposting.dto.response.GetDetailJobPostingResponse;
+import com.cdg.hackathon.jobposting.dto.response.GetJobPostingResponse;
+import com.cdg.hackathon.jobposting.service.JobPostingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RequestMapping("/api/v1")
 @Slf4j
@@ -29,19 +32,19 @@ public class JobPostingController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-//    @GetMapping("/job-postings/{keyword}")
-//    public ResponseEntity<GetJobPostingsResponse> getJobPostings(@PathVariable("keyword") String keyword) {
-//
-//        Page<JobPostingData> jobPostingData = jobPostingService.getJobPostings(keyword);
-//        return new ResponseEntity(new GetJobPostingsResponse(jobPostingData), HttpStatus.OK);
-//    }
+    @GetMapping("/job-postings")
+    public ResponseEntity<GetJobPostingResponse> getJobPostings(@RequestParam(value = "keyword", required = false) String keyword, int page, int size) {
+
+        List<GetJobPostingResponse> getJobPostingResponses = jobPostingService.getJobPostings(keyword,page,size);
+        return new ResponseEntity(getJobPostingResponses, HttpStatus.OK);
+    }
 
     @GetMapping("/job-postings/{postId}")
-    public ResponseEntity<GetJobPostingResponse> getJobPosting(@PathVariable("postId") Long postId) {
+    public ResponseEntity<GetDetailJobPostingResponse> getDetailJobPosting(@PathVariable("postId") Long postId) {
 
-        GetJobPostingResponse getJobPostingResponse = jobPostingService.getJobPosting(postId);
+        GetDetailJobPostingResponse getDetailJobPostingResponse = jobPostingService.getJobPosting(postId);
 
-        return new ResponseEntity(getJobPostingResponse, HttpStatus.OK);
+        return new ResponseEntity(getDetailJobPostingResponse, HttpStatus.OK);
     }
 
 

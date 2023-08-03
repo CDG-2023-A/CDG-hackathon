@@ -1,4 +1,4 @@
-package com.cdg.hackathon.dto.request;
+package com.cdg.hackathon.jobposting.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +13,6 @@ public class UpdateJobPostingRequest {
 
     private String content;
 
-    private String tech_stack;
+    private String techStack;
 
 }

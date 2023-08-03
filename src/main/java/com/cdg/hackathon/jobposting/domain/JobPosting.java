@@ -1,17 +1,19 @@
-package com.cdg.hackathon.domain;
+package com.cdg.hackathon.jobposting.domain;
 
-import com.cdg.hackathon.dto.request.CreateJobPostingRequest;
+import com.cdg.hackathon.jobposting.dto.request.CreateJobPostingRequest;
+import com.cdg.hackathon.jobposting.dto.request.UpdateJobPostingRequest;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "JOB_POSTING")
 public class JobPosting extends BaseEntity{
 
     private String position;
@@ -23,6 +25,7 @@ public class JobPosting extends BaseEntity{
 
     private String content;
 
+    @NotNull
     @Column(name = "company_id")
     private Long companyId;
 
@@ -44,5 +47,24 @@ public class JobPosting extends BaseEntity{
                 .content(request.getContent())
                 .companyId(request.getCompanyId())
                 .build();
+    }
+
+    public void update(UpdateJobPostingRequest request) {
+        if(null != request.getContent()){
+            this.content = request.getContent();
+        }
+
+        if(null != request.getReward()){
+            this.reward = request.getReward();
+        }
+
+        if(null != request.getTechStack()){
+            this.techStack = request.getTechStack();
+        }
+
+        if(null != request.getPosition()){
+            this.position = request.getPosition();
+        }
+
     }
 }

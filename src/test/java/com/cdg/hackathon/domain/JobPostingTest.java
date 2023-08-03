@@ -1,6 +1,7 @@
 package com.cdg.hackathon.domain;
 
-import com.cdg.hackathon.dto.request.CreateJobPostingRequest;
+import com.cdg.hackathon.jobposting.dto.request.CreateJobPostingRequest;
+import com.cdg.hackathon.jobposting.domain.JobPosting;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

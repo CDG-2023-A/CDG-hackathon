@@ -1,5 +1,6 @@
-package com.cdg.hackathon.domain;
+package com.cdg.hackathon.company.domain;
 
+import com.cdg.hackathon.jobposting.domain.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,6 @@ import javax.persistence.Entity;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Company extends BaseEntity {
-
     private String name;
 
     private String country;

@@ -1,16 +1,19 @@
-package com.cdg.hackathon.domain;
+package com.cdg.hackathon.applyhistory.domain;
 
-import com.cdg.hackathon.dto.request.DoApplyRequest;
+import com.cdg.hackathon.jobposting.domain.BaseEntity;
+import com.cdg.hackathon.jobposting.dto.request.DoApplyRequest;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ApplyHistory extends BaseEntity{
+@Table(name = "APPLY_HISTORY")
+public class ApplyHistory extends BaseEntity {
 
     @Column(name = "job_posting_id")
     private Long jobPostingId;

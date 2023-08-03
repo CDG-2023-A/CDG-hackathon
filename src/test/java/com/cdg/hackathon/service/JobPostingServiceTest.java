@@ -1,8 +1,9 @@
 package com.cdg.hackathon.service;
 
-import com.cdg.hackathon.domain.JobPosting;
-import com.cdg.hackathon.dto.request.CreateJobPostingRequest;
-import com.cdg.hackathon.repository.JobPostingRepository;
+import com.cdg.hackathon.jobposting.domain.JobPosting;
+import com.cdg.hackathon.jobposting.dto.request.CreateJobPostingRequest;
+import com.cdg.hackathon.jobposting.repository.JobPostingRepository;
+import com.cdg.hackathon.jobposting.service.JobPostingService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,7 @@
-package com.cdg.hackathon.dto.response;
+package com.cdg.hackathon.jobposting.dto.response;
 
-import com.cdg.hackathon.domain.Company;
-import com.cdg.hackathon.domain.JobPosting;
+import com.cdg.hackathon.company.domain.Company;
+import com.cdg.hackathon.jobposting.domain.JobPosting;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class GetJobPostingResponse {
+public class GetDetailJobPostingResponse {
 
     private Long jobPostingId;
 
@@ -32,7 +32,7 @@ public class GetJobPostingResponse {
     private List<Long> otherJobPositing;
 
     @Builder
-    private GetJobPostingResponse(Long jobPostingId, String name, String country, String region, String position, Integer reward, String techStack, String content, List<Long> otherJobPositing) {
+    private GetDetailJobPostingResponse(Long jobPostingId, String name, String country, String region, String position, Integer reward, String techStack, String content, List<Long> otherJobPositing) {
         this.jobPostingId = jobPostingId;
         this.name = name;
         this.country = country;
@@ -44,7 +44,7 @@ public class GetJobPostingResponse {
         this.otherJobPositing = otherJobPositing;
     }
 
-    public GetJobPostingResponse(Company company, JobPosting jobPosting, List<Long> otherJobPositing){
+    public GetDetailJobPostingResponse(Company company, JobPosting jobPosting, List<Long> otherJobPositing){
         this.jobPostingId = jobPosting.getId();
         this.name = company.getName();
         this.country = company.getCountry();
