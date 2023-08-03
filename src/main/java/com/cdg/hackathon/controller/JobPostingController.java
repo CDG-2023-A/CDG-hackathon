@@ -1,15 +1,12 @@
 package com.cdg.hackathon.controller;
 
-import com.cdg.hackathon.dto.JobPostingData;
 import com.cdg.hackathon.dto.request.CreateJobPostingRequest;
 import com.cdg.hackathon.dto.request.DoApplyRequest;
 import com.cdg.hackathon.dto.request.UpdateJobPostingRequest;
 import com.cdg.hackathon.dto.response.GetJobPostingResponse;
-import com.cdg.hackathon.dto.response.GetJobPostingsResponse;
 import com.cdg.hackathon.service.JobPostingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,13 +36,13 @@ public class JobPostingController {
 //        return new ResponseEntity(new GetJobPostingsResponse(jobPostingData), HttpStatus.OK);
 //    }
 
-//    @GetMapping("/job-postings/{postId}")
-//    public ResponseEntity<GetJobPostingResponse> getJobPosting(@PathVariable("postId") Long postId) {
-//
-//        GetJobPostingResponse getJobPostingResponse = jobPostingService.getJobPosting(postId);
-//
-//        return new ResponseEntity(getJobPostingResponse, HttpStatus.OK);
-//    }
+    @GetMapping("/job-postings/{postId}")
+    public ResponseEntity<GetJobPostingResponse> getJobPosting(@PathVariable("postId") Long postId) {
+
+        GetJobPostingResponse getJobPostingResponse = jobPostingService.getJobPosting(postId);
+
+        return new ResponseEntity(getJobPostingResponse, HttpStatus.OK);
+    }
 
 
     @PatchMapping("/job-postings/{postId}")

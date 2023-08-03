@@ -54,4 +54,19 @@ class JobPostingServiceTest {
                         techStack
                 );
     }
+
+
+    @DisplayName("채용공고 상세정보를 가져온다")
+    @Test
+    public void getJobPosting() {
+        //given
+        Long companyId = 1L;
+        String position = "벡엔드 주니어 개발자";
+        Integer reward = 1000000;
+        String content = "원티드랩에서 벡엔드 주니어 개발자를 채용합니다.";
+        String techStack = "springBoot";
+        CreateJobPostingRequest request = new CreateJobPostingRequest(companyId, position, reward, content, techStack);
+        Long jobPostingId = jobPostingService.createJobPosting(request);
+        JobPosting jobPosting = jobPostingRepository.findById(jobPostingId).orElseThrow();
+    }
 }

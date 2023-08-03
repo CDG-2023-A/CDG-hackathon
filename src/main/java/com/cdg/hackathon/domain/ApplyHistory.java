@@ -1,6 +1,8 @@
 package com.cdg.hackathon.domain;
 
+import com.cdg.hackathon.dto.request.DoApplyRequest;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
@@ -15,4 +17,16 @@ public class ApplyHistory extends BaseEntity{
 
     @Column(name = "user_id")
     private Long userId;
+
+    @Builder
+    private ApplyHistory(Long jobPostingId, Long userId) {
+        this.jobPostingId = jobPostingId;
+        this.userId = userId;
+    }
+
+    public ApplyHistory(DoApplyRequest request){
+        this.jobPostingId = request.getJobPostingId();
+        this.userId = request.getUserId();
+    }
+
 }
