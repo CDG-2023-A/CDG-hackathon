@@ -11,8 +11,9 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class GetJobPostingsResponse {
 
-    private List<JobPostingData> jobPostingData;
-    public GetJobPostingsResponse(List<JobPostingData> jobPostingData) {
-        this.jobPostingData = jobPostingData;
+    private List<JobPostingData> createJobPostingData;
+
+    public GetJobPostingsResponse(List<JobPostingData> createJobPostingData) {
+        this.createJobPostingData = createJobPostingData;
     }
 }

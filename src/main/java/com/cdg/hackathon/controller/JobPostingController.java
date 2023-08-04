@@ -1,6 +1,5 @@
 package com.cdg.hackathon.controller;
 
-import com.cdg.hackathon.dto.request.CreateJobPostingRequest;
 import com.cdg.hackathon.dto.request.DoApplyRequest;
 import com.cdg.hackathon.dto.request.UpdateJobPostingRequest;
 import com.cdg.hackathon.dto.response.GetJobPostingsResponse;
@@ -24,7 +23,7 @@ public class JobPostingController {
     private final JobPostingService jobPostingService;
 
     @PostMapping("/job-postings")
-    public ResponseEntity<Long> createJobPosting(@Valid @RequestBody CreateJobPostingRequest request) {
+    public ResponseEntity<Long> createJobPosting(@Valid @RequestBody com.cdg.hackathon.dto.request.CreateJobPostingRequest request) {
 
         Long jobPosting = jobPostingService.createJobPosting(request.toServiceData());
         return ResponseEntity.status(HttpStatus.OK).body(jobPosting);

@@ -1,6 +1,6 @@
 package com.cdg.hackathon.dto.request;
 
-import com.cdg.hackathon.service.JobPostingData;
+import com.cdg.hackathon.service.request.CreateJobPostingServiceRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,8 +28,8 @@ public class CreateJobPostingRequest {
     @NotBlank(message = "techStack은 필수 값 입니다.")
     private String techStack;
 
-    public JobPostingData toServiceData() {
-        return JobPostingData.builder()
+    public CreateJobPostingServiceRequest toServiceData() {
+        return CreateJobPostingServiceRequest.builder()
                 .companyId(companyId)
                 .position(position)
                 .reward(reward)

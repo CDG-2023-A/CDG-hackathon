@@ -1,12 +1,10 @@
 package com.cdg.hackathon.domain;
 
-import com.cdg.hackathon.dto.request.CreateJobPostingRequest;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
@@ -18,12 +16,10 @@ public class JobPosting extends BaseEntity{
 
     private Integer reward;
 
-    @Column(name = "tech_stack")
     private String techStack;
 
     private String content;
 
-    @Column(name = "company_id")
     private Long companyId;
 
 
