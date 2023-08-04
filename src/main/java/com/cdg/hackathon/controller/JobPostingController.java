@@ -1,12 +1,12 @@
 package com.cdg.hackathon.controller;
 
+import com.cdg.hackathon.dto.request.CreateJobPostingRequest;
 import com.cdg.hackathon.dto.request.DoApplyRequest;
 import com.cdg.hackathon.dto.request.UpdateJobPostingRequest;
 import com.cdg.hackathon.dto.response.GetJobPostingsResponse;
 import com.cdg.hackathon.service.JobPostingData;
 import com.cdg.hackathon.service.JobPostingService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RequestMapping("/api/v1")
-@Slf4j
 @RequiredArgsConstructor
 @RestController
 public class JobPostingController {
@@ -23,7 +22,7 @@ public class JobPostingController {
     private final JobPostingService jobPostingService;
 
     @PostMapping("/job-postings")
-    public ResponseEntity<Long> createJobPosting(@Valid @RequestBody com.cdg.hackathon.dto.request.CreateJobPostingRequest request) {
+    public ResponseEntity<Long> createJobPosting(@Valid @RequestBody CreateJobPostingRequest request) {
 
         Long jobPosting = jobPostingService.createJobPosting(request.toServiceData());
         return ResponseEntity.status(HttpStatus.OK).body(jobPosting);

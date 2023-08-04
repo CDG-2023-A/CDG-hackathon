@@ -17,9 +17,10 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.groups.Tuple.tuple;
 
-@DataJpaTest
+//@SpringBootTest // 스프링부트 통합테스트 환경
+//@WebMvcTest // SpringMvc 녀석들만 등록해서 테스트 환경을 만들어줌 -> controller 테스트
+@DataJpaTest // JPA 환경에 필요한 것만 가져오는 녀석
 @Import(JpaAuditionConfig.class)
-//@Sql(scripts = {"classpath:schema.sql", "classpath:data.sql"})
 class JobPostingEntityRepositoryTest {
 
     private JobPostingRepository jobPostingRepository;
@@ -36,11 +37,28 @@ class JobPostingEntityRepositoryTest {
         this.jobPostingEntityRepository = new JobPostingEntityRepositoryImpl(entityManager);
     }
 
-    @DisplayName("모든 채용공고와 등록한 회사를 같이 조회한다.")
+    @DisplayName("모든 채용공고와 등록한 회사를 조인해서 조회한다.")
     @Test
     void findAllJobPostingData(){
         // when
         List<JobPostingData> jobPostingDatas = jobPostingEntityRepository.findAllJobPostingData("");
+
+        // then
+        assertThat(jobPostingDatas).hasSize(3)
+                .extracting("name", "region", "position", "reward", "techStack")
+                .containsExactlyInAnyOrder(
+                        tuple("원티드랩", "강남", "프론트엔드 시니어 개발자", 2000000, "React"),
+                        tuple("원티드랩", "강남", "백엔드 주니어 개발자", 1500000, "SpringBoot"),
+                        tuple("인프런", "판교", "백엔드 시니어 개발자", 2000000, "SpringBoot")
+                );
+
+    }
+
+    @DisplayName("모든 채용공고와 등록한 회사를 조인해서 조회한다2.")
+    @Test
+    void findAllJobPostingData2(){
+        // when
+        List<JobPostingData> jobPostingDatas = jobPostingEntityRepository.findAllJobPostingData(null);
 
         // then
         assertThat(jobPostingDatas).hasSize(3)

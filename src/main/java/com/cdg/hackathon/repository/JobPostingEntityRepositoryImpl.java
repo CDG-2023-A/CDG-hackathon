@@ -20,6 +20,18 @@ public class JobPostingEntityRepositoryImpl implements JobPostingEntityRepositor
         this.jpaQueryFactory = new JPAQueryFactory(entityManager);
     }
 
+
+//    "SELECT new com.example.jehunonboarding.domain.JobPosting(c.id," +
+//            " c.companyName, " +
+//            "c.nation," +
+//            " c.region, " +
+//            "jp.jobPosition, " +
+//            "jp.jobCompensation," +
+//            " jp.description, " +
+//            "jp.skill) " +
+//            "FROM JobPostingEntity " +
+//            "jp INNER JOIN Company c " +
+//            "ON jp.companyId = c.id WHERE jp.jobPosition LIKE %:keyword% OR c.companyName LIKE %:keyword%"
     @Override
     public List<JobPostingData> findAllJobPostingData(String keyword) {
         String searchKeyword = (keyword == null || keyword.isEmpty()) ? "%" : "%" + keyword + "%";
