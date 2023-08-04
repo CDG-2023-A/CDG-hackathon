@@ -137,12 +137,6 @@ class JobPostingEntityRepositoryTest {
         );
 
         jobPostingRepository.saveAll(List.of(jobPosting1, jobPosting2, jobPosting3, jobPosting4));
-
-        List<JobPosting> all = jobPostingRepository.findAll();
-
-        for (JobPosting jobPosting : all) {
-            System.out.println("jobPosting.getId() = " + jobPosting.getId());
-        }
     }
 
 

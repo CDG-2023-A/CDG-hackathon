@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter // setter없으면 projection시 데이터가 null로 들어감
 public class JobPostingData {
 
-    private Long jobPostingId;
+    private Long id;
 
     private String name;
 

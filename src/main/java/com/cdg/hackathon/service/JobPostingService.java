@@ -33,8 +33,7 @@ public class JobPostingService {
 
     // 1. 채용 공고와 회사를 join해서 가져온다.
     public List<JobPostingData> getJobPostings(String keyword) {
-         jobPostingRepository.findAllJobPostingData(keyword);
-        return null;
+         return jobPostingRepository.findAllJobPostingData(keyword);
     }
 
     @Transactional
