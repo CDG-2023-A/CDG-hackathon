@@ -36,7 +36,7 @@ class JobPostingServiceTest {
                 position, reward, content, techStack);
 
         // when
-        Long jobPostingId = jobPostingService.createJobPosting(request);
+        Long jobPostingId = jobPostingService.createJobPosting(request.toServiceData());
         JobPosting jobPosting = jobPostingRepository.findById(jobPostingId).orElseThrow();
 
         // then

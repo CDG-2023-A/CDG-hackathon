@@ -1,9 +1,18 @@
 package com.cdg.hackathon.dto.response;
 
-import com.cdg.hackathon.dto.JobPostingData;
-import org.springframework.data.domain.Page;
+import com.cdg.hackathon.service.JobPostingData;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import java.util.List;
+
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class GetJobPostingsResponse {
-    public GetJobPostingsResponse(Page<JobPostingData> jobPostingData) {
+
+    private List<JobPostingData> jobPostingData;
+    public GetJobPostingsResponse(List<JobPostingData> jobPostingData) {
+        this.jobPostingData = jobPostingData;
     }
 }

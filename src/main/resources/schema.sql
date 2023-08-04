@@ -9,7 +9,9 @@ create table company
         primary key,
     name    varchar(20) not null,
     country varchar(10) not null,
-    region  varchar(50) not null
+    region  varchar(50) not null,
+    created_date date not null,
+    modified_date date not null
 );
 
 create table job_posting
@@ -21,6 +23,8 @@ create table job_posting
     tech_stack varchar(20)  not null,
     content    text         not null,
     company_id bigint       not null,
+    created_date date not null,
+    modified_date date not null,
     foreign key (company_id) references company (id)
 );
 
@@ -29,6 +33,8 @@ create table users
 (
     id   bigint auto_increment
         primary key,
+    created_date date not null,
+    modified_date date not null,
     name varchar(10) null
 );
 
@@ -38,6 +44,8 @@ create table apply_history
         primary key,
     user_id        bigint not null,
     job_posting_id bigint not null,
+    created_date date not null,
+    modified_date date not null,
     foreign key (user_id) references users (id),
     foreign key (job_posting_id) references job_posting (id)
 );

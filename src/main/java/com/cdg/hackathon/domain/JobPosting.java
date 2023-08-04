@@ -35,14 +35,4 @@ public class JobPosting extends BaseEntity{
         this.content = content;
         this.companyId = companyId;
     }
-
-    public static JobPosting fromCreateJobRequest(CreateJobPostingRequest request) {
-        return JobPosting.builder()
-                .position(request.getPosition())
-                .reward(request.getReward())
-                .techStack(request.getTechStack())
-                .content(request.getContent())
-                .companyId(request.getCompanyId())
-                .build();
-    }
 }
